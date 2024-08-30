@@ -1,8 +1,6 @@
-FROM nginx:alpine
+FROM alpine
 
 ARG PB_VERSION=0.22.20
-
-COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN apk add --no-cache \
     unzip \
@@ -17,6 +15,4 @@ COPY ./pb_hooks /pb/pb_hooks
 CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8090"]
 
 
-EXPOSE 80
-
-
+EXPOSE 8090
